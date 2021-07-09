@@ -1,7 +1,7 @@
 function __git_fish_install --on-event git_fish_install
   set -l complet_filepath $HOME/.config/fish/completions/git_fish.fish
   if not test -e $complet_filepath
-    cat /usr/share/fish/completions/git.fish | sed -r 's/(complete.*) git (.+)/\1 git_fish \2/g'    >  $complet_filepath
+    cat /usr/share/fish/completions/git.fish | sed -E 's/(complete.*) git (.+)/\1 git_fish \2/g'    >  $complet_filepath
     echo "complete -f -c git_fish -n '__fish_use_subcommand' -a 'cd'     -d 'Change git directory'" >> $complet_filepath
     echo "complete -f -c git_fish -n '__fish_use_subcommand' -a 'erase'  -d 'Erase branches'"       >> $complet_filepath
     echo "complete -f -c git_fish -n '__fish_use_subcommand' -a 'select' -d 'Select branch'"        >> $complet_filepath
