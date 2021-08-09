@@ -6,6 +6,8 @@ function git_fish -a sub_command
       __git_fish_erase
     case 'select' 'sl'
       __git_fish_select
+    case 'commit' 'cm'
+      eval "__git_fish_git $argv[1..-2] \"'$argv[-1]'\""
     case '*'
       eval "__git_fish_git $argv"
   end
@@ -128,5 +130,5 @@ function __git_fish_is_exit_in_array -a key -a array_str
 end
 
 function __git_fish_git
-  command git $argv
+  command git $argv[1..-2] $argv[-1]
 end
